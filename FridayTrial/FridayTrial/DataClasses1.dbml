@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TestDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\;Initial Catalog=TestDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TestDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Building" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Building_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="first_Name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="last_Name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_BuildingInsert" Method="sp_BuildingInsert">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Address" Parameter="address" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_EmployeeInsert" Method="sp_EmployeeInsert">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Building_id" Parameter="building_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="First_Name" Parameter="first_Name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="last_Name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="Salary" Parameter="salary" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_GetEmployeeDetailsByBuildingID" Method="sp_GetEmployeeDetailsByBuildingID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_GetEmployeeDetailsByBuildingIDResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="salary" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
